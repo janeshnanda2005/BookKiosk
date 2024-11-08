@@ -16,6 +16,10 @@ firebase_admin.initialize_app(cred, {
 API_KEY = 'AIzaSyARlrYxIKVkTUQLXA796cQjxWZXcx-BHFI'
 
 
+def set_RGB(r,g,b):
+    lcd.setRGB(r,g,b)
+
+
 def display_message1(line1):
     lcd.setCursor(0, 0)   
     lcd.write(line1)      
@@ -45,9 +49,11 @@ def write_book():
     counter = 1
     while True:
         display_message1("Drop Your Book!")
-
+        set_RGB(255,0,0)
 
         display_message2("Scan Your Book:")
+        set_RGB(0,0,0)
+        
         isbn_book1 = input()
 
         time.sleep(4)
@@ -66,17 +72,16 @@ def write_book():
         
         
         display_message1("Book Title")
-
         display_message2(f"{book1}")
+        set_RGB(255,0,0)
 
         time.sleep(4)
 
         lcd.clear()
 
-       
-        
-        
         display_message1("Scan New Book!!")
+        
+        set_RGB(255,0,0)
         isbn_book2 = input()
     
         time.sleep(5)
@@ -89,9 +94,8 @@ def write_book():
         
         
         display_message1(f"Book Title")
-
-
         display_message2(f"{book2}")
+        set_RGB(255,0,0)
 
         time.sleep(5)
 
@@ -101,7 +105,7 @@ def write_book():
             'ID': f'{counter}',
             'book_1': f'{book1}',
             'book_2': f'{book2}',
-            'date_time': f'{val_1}'
+            'date_time': f'{val_1[:19]}'
         }
         
 
